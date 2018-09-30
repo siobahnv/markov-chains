@@ -1,7 +1,7 @@
 """Generate Markov text from text files."""
 
 from random import choice
-
+import random
 
 def open_and_read_file(file_path):
     """Take file path as string; return text as string.
@@ -43,50 +43,32 @@ def make_chains(text_string):
     chains = {}
 
     # your code goes here
-    bigrams = []
 
     split_string = text_string.split()
     for i in range(len(split_string) - 2):
         key = (split_string[i], split_string[i + 1])
         value = split_string[i + 2]
-        # value = split_string[split_string.index(key[1]) + 1]
 
         if key in chains:
             chains[key].append(value)
         else:
-            chains[key] =   [value]
-
-        # print(key, [value])
-    for key, value in chains.items():
-        print (key, value)
-
-
-
-
-
-    # chains = {}
-
-    # # your code goes here
-    # list_of_keys = []
-    # split_string = text_string.split(" ")
-    # for i in range(len(split_string) - 1):
-    #     key = (split_string[i], split_string[i + 1])
-    #     key = " ".join(key)
-    #     list_of_keys.append(key)
-    # for word in list_of_keys:
-    #     if word in 
-
+            chains[key] = [value]
 
     return chains
 
 
 def make_text(chains):
     """Return text from chains."""
-
     words = []
 
-    # your code goes here
+    for key, value in chains.items():
+        new_key = key[1] 
+        words.append(new_key)
+        new_value = random.choice(value)
+        words.append(new_value)
+   
 
+    
     return " ".join(words)
 
 
