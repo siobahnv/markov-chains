@@ -40,7 +40,6 @@ def make_chains(text_string, n_grams):
     counter = 0
 
     while counter < (len(split_string) - n_grams):
-        print(counter)
         key = []
         value = []
 
@@ -57,7 +56,6 @@ def make_chains(text_string, n_grams):
             chains[key].append(value)
 
         counter += 1
-    print(chains)
     return chains
 
 def make_text(chains, n_grams):
@@ -81,10 +79,12 @@ def make_text(chains, n_grams):
 
 
 input_path = sys.argv[1]
-n_grams = int(sys.argv[2])
+second_input = sys.argv[2]
+n_grams = int(sys.argv[3])
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
-
+second_text = open_and_read_file(second_input)
+input_text = input_text + second_text
 # Get a Markov chain
 chains = make_chains(input_text, n_grams)
 # Produce random text
